@@ -1,0 +1,26 @@
+# Dockerfile para aplicação ASP.NET Core (.NET 7)
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+WORKDIR /src
+COPY BackEnd/GameLife.sln ./
+COPY BackEnd/GameLifeApi/GameLifeApi.csproj GameLifeApi/
+COPY BackEnd/GameLifeModels/GameLifeModels.csproj GameLifeModels/
+COPY BackEnd/GameLifeRepository/GameLifeRepository.csproj GameLifeRepository/
+COPY BackEnd/GameLifeServices/GameLifeServices.csproj GameLifeServices/
+COPY BackEnd/GameLifeApi/ GameLifeApi/
+COPY BackEnd/GameLifeModels/ GameLifeModels/
+COPY BackEnd/GameLifeRepository/ GameLifeRepository/
+COPY BackEnd/GameLifeServices/ GameLifeServices/
+COPY BackEnd/GameLifeTests/ GameLifeTests/
+RUN dotnet restore GameLife.sln
+RUN dotnet test GameLifeTests/GameLifeTests.csproj --logger:"console;verbosity=normal"
+RUN dotnet publish GameLifeApi/GameLifeApi.csproj -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+ENTRYPOINT ["dotnet", "GameLifeApi.dll"]

@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/api/index.ts","./src/lib/utils.ts","./src/ui/alertmessage.tsx","./src/ui/alert/alertmessage.tsx","./src/ui/board/index.tsx","./src/ui/controls/index.tsx","./src/ui/hooks/usealert.ts","./src/ui/hooks/useboard.ts","./src/ui/pages/index.tsx"],"version":"5.8.3"}
