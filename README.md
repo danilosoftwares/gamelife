@@ -141,8 +141,8 @@ Main available endpoints:
 
 ---
 
-## Contributing
-Pull requests are welcome! To contribute, create a branch, make your changes, and submit a PR.
+## Demo
+![](demonstration.gif)
 
 ## License
 This project is open-source and licensed under the MIT license.
