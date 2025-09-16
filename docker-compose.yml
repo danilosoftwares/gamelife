@@ -12,11 +12,13 @@ services:
     build:
       context: .
       dockerfile: dockerfile-frontend
+      args:
+        VITE_API_URL: http://localhost:7878    
     container_name: react_cdn
     ports:
       - "8080:80"
     environment:
-      VITE_API_URL: ${VITE_API_URL} 
+      VITE_API_URL: http://localhost:7878   
     volumes:
       - ./FrontEnd/nginx/nginx.conf:/etc/nginx/conf.d/custom.conf:ro      
     depends_on:

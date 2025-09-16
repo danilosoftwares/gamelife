@@ -33,7 +33,7 @@ GameLife is a Conway's Game of Life simulator with a modern web interface and a 
    cd BackEnd/GameLifeApi
    dotnet run
    ```
-   The API will be available at http://localhost:7878/swagger
+   The API will be available at http://localhost:7878
 3. **Frontend:**
    ```zsh
    cd FrontEnd

@@ -1,6 +1,9 @@
 FROM node:18-alpine as builder
 WORKDIR /app
 COPY ./FrontEnd .
+WORKDIR /app
+ARG VITE_API_URL
+RUN echo "VITE_API_URL=$VITE_API_URL" > .env
 RUN npm install
 RUN npm run build
 
